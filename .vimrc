@@ -1,6 +1,9 @@
 " 行番号表示
 set number
 
+" 編集中ファイル名を表示
+set laststatus=2
+
 " カーソル行の背景色を変更
 set cursorline
 
@@ -17,5 +20,8 @@ noremap gk k
 noremap ; :
 noremap : ;
 
+set clipboard+=unnamed
 
+" tabの移動量を変更
+set tabstop=2
 

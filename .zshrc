@@ -5,13 +5,9 @@
 # 環境変数
 export LANG=ja_JP.UTF-8
 
-
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
-
-# emacs 風キーバインドにする
-# bindkey -e
 
 # ヒストリの設定
 HISTFILE=~/.zsh_history
@@ -145,7 +141,6 @@ elif which putclip >/dev/null 2>&1 ; then
 fi
 
 
-
 ########################################
 # OS 別の設定
 case ${OSTYPE} in
@@ -160,9 +155,6 @@ case ${OSTYPE} in
         ;;
 esac
 
-# vim:set ft=zsh:
-
-
 # ruby env
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -175,3 +167,21 @@ export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# peco setting
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
