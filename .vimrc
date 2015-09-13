@@ -38,6 +38,7 @@ NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'Shougo/vimfiler', {
 												\   'autoload' : { 'commands' : [ 'VimFiler' ] },
 												\ }
+NeoBundle 'toyamarinyon/vim-swift'
 
 call neobundle#end()
 
