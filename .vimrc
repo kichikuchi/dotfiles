@@ -1,3 +1,49 @@
+if has('vim_starting')
+   " 初回起動時のみruntimepathにneobundleのパスを指定する
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" NeoBundleを初期化
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" NeoBundleをNeoBundle自体で管理する
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" colorschemes
+" molokai colorscheme
+NeoBundle 'tomasr/molokai'
+" mustang colorscheme
+NeoBundle 'croaker/mustang-vim'
+" wombat colorscheme
+NeoBundle 'jeffreyiacono/vim-colors-wombat'
+" jellybeans colorscheme
+NeoBundle 'nanotech/jellybeans.vim'
+" lucius colorscheme
+NeoBundle 'vim-scripts/Lucius'
+" zenburn colorscheme
+NeoBundle 'vim-scripts/Zenburn'
+" mrkn256 colorscheme
+NeoBundle 'mrkn/mrkn256.vim'
+" railscasts colorscheme
+NeoBundle 'jpo/vim-railscasts-theme'
+" pyte colorscheme
+NeoBundle 'therubymug/vim-pyte'
+" solarized colorscheme
+NeoBundle 'altercation/vim-colors-solarized'
+
+" plugins
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
+
+NeoBundleLazy 'Shougo/vimfiler', {
+												\   'autoload' : { 'commands' : [ 'VimFiler' ] },
+												\ }
+
+call neobundle#end()
+
+" ファイルタイプ別のプラグイン/インデントを有効にする
+filetype plugin indent on
+
 " 行番号表示
 set number
 
@@ -6,6 +52,9 @@ set laststatus=2
 
 " カーソル行の背景色を変更
 set cursorline
+
+" color scheme
+colorscheme jellybeans
 
 " syntax
 syntax on
