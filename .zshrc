@@ -185,3 +185,15 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+# readline rubyinstall時に日本語を入力可能にする
+export RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=`brew --prefix readline`"
+
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# go
+if [ -x "`which go`" ]; then
+  export GOROOT=`go env GOROOT`
+  export GOPATH=$HOME/code/go-local
+  export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi
