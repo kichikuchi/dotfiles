@@ -1,6 +1,3 @@
-# License : MIT
-# http://mollifier.mit-license.org/
-
 ########################################
 # 環境変数
 export LANG=ja_JP.UTF-8
@@ -13,14 +10,6 @@ colors
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
-
-# プロンプト
-# 1行表示
-# PROMPT="%~ %# "
-# 2行表示
-PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
-%# "
-
 
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
@@ -49,21 +38,30 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
-
-########################################
-# vcs_info
+# プロンプト
 autoload -Uz vcs_info
-autoload -Uz add-zsh-hook
-
-zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
-zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
-
-function _update_vcs_info_msg() {
-    LANG=en_US.UTF-8 vcs_info
-    RPROMPT="${vcs_info_msg_0_}"
+zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' max-exports 6 # formatに入る変数の最大数
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats '%b@%r' '%c' '%u'
+zstyle ':vcs_info:git:*' actionformats '%b@%r|%a' '%c' '%u'
+setopt prompt_subst
+function vcs_echo {
+    local st branch color
+		STY= LANG=en_US.UTF-8 vcs_info
+		st=`git status 2> /dev/null`
+		if [[ -z "$st" ]]; then return; fi
+		branch="$vcs_info_msg_0_"
+	  if   [[ -n "$vcs_info_msg_1_" ]]; then color=${fg[green]}
+	  elif [[ -n "$vcs_info_msg_2_" ]]; then color=${fg[red]}
+	  elif [[ -n `echo "$st" | grep "^Untracked"` ]]; then color=${fg[blue]}
+    else color=${fg[cyan]}
+    fi
+    echo "%{$color%}(%{$branch%})%{$reset_color%}" | sed -e s/@/"%F{yellow}@%f%{$color%}"/
 }
-add-zsh-hook precmd _update_vcs_info_msg
-
+PROMPT='
+%F{yellow}[%~]%f `vcs_echo`
+%(?.$.%F{red}$%f) '
 
 ########################################
 # オプション
@@ -185,15 +183,9 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
-# readline rubyinstall時に日本語を入力可能にする
-export RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=`brew --prefix readline`"
-
-# nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-# go
+# for go lang
 if [ -x "`which go`" ]; then
   export GOROOT=`go env GOROOT`
-  export GOPATH=$HOME/code/go-local
+  export GOPATH=$HOME/go
   export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
