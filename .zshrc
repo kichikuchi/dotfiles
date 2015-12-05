@@ -1,4 +1,3 @@
-########################################
 # 環境変数
 export LANG=ja_JP.UTF-8
 
@@ -19,7 +18,9 @@ select-word-style default
 zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
 
-########################################
+# vim bind
+bindkey -v
+
 # 補完
 # 補完機能を有効にする
 autoload -Uz compinit
@@ -182,12 +183,6 @@ function peco-select-history() {
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
-
-# readline rubyinstall時に日本語を入力可能にする
-export RUBY_CONFIGURE_OPTS="--enable-shared --with-readline-dir=`brew --prefix readline`"
-
-# nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # for go lang
 if [ -x "`which go`" ]; then
