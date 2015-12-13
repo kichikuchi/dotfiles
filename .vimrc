@@ -9,36 +9,16 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " NeoBundleをNeoBundle自体で管理する
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" colorschemes
-" molokai colorscheme
-NeoBundle 'tomasr/molokai'
-" mustang colorscheme
-NeoBundle 'croaker/mustang-vim'
-" wombat colorscheme
-NeoBundle 'jeffreyiacono/vim-colors-wombat'
-" jellybeans colorscheme
-NeoBundle 'nanotech/jellybeans.vim'
-" lucius colorscheme
-NeoBundle 'vim-scripts/Lucius'
-" zenburn colorscheme
-NeoBundle 'vim-scripts/Zenburn'
-" mrkn256 colorscheme
-NeoBundle 'mrkn/mrkn256.vim'
-" railscasts colorscheme
-NeoBundle 'jpo/vim-railscasts-theme'
-" pyte colorscheme
-NeoBundle 'therubymug/vim-pyte'
-" solarized colorscheme
-NeoBundle 'altercation/vim-colors-solarized'
-
 " plugins
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'toyamarinyon/vim-swift'
+NeoBundle 'Townk/vim-autoclose'
 
 NeoBundleLazy 'Shougo/vimfiler', {
 												\   'autoload' : { 'commands' : [ 'VimFiler' ] },
 												\ }
-NeoBundle 'toyamarinyon/vim-swift'
 
 call neobundle#end()
 
@@ -53,9 +33,6 @@ set laststatus=2
 
 " カーソル行の背景色を変更
 set cursorline
-
-" color scheme
-colorscheme jellybeans
 
 " syntax
 syntax on
