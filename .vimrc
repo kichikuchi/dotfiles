@@ -15,6 +15,7 @@ NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'toyamarinyon/vim-swift'
 NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'scrooloose/nerdtree'
 
 NeoBundleLazy 'Shougo/vimfiler', {
 												\   'autoload' : { 'commands' : [ 'VimFiler' ] },
