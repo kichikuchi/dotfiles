@@ -16,6 +16,9 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'toyamarinyon/vim-swift'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'grep.vim'
+NeoBundle 'mattn/emmet-vim'
 
 NeoBundleLazy 'Shougo/vimfiler', {
 												\   'autoload' : { 'commands' : [ 'VimFiler' ] },
