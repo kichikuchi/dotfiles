@@ -19,6 +19,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'grep.vim'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'tpope/vim-fugitive'
 
 NeoBundleLazy 'Shougo/vimfiler', {
 												\   'autoload' : { 'commands' : [ 'VimFiler' ] },
