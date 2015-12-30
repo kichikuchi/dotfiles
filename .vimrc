@@ -20,6 +20,14 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'grep.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+  \     'windows' : 'make -f make_mingw32.mak',
+  \     'cygwin' : 'make -f make_cygwin.mak',
+  \     'mac' : 'make -f make_mac.mak',
+  \     'unix' : 'make -f make_unix.mak',
+  \    },
+  \ }
 
 NeoBundleLazy 'Shougo/vimfiler', {
 												\   'autoload' : { 'commands' : [ 'VimFiler' ] },
