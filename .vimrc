@@ -42,6 +42,7 @@ NeoBundleLazy 'Shougo/vimfiler', {
 NeoBundle 'LeafCage/yankround.vim'
 NeoBundleLazy 'tpope/vim-endwise', {
   \ 'autoload' : { 'insert' : 1,}}
+NeoBundle 'glidenote/memolist.vim'
 
 call neobundle#end()
 
