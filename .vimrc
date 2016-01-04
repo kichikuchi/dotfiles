@@ -43,6 +43,8 @@ NeoBundle 'LeafCage/yankround.vim'
 NeoBundleLazy 'tpope/vim-endwise', {
   \ 'autoload' : { 'insert' : 1,}}
 NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'vim-scripts/AnsiEsc.vim'
+NeoBundle 'bronson/vim-trailing-whitespace'
 
 call neobundle#end()
 
