@@ -78,3 +78,5 @@ set clipboard+=unnamed
 " tabの移動量を変更
 set tabstop=2
 
+" 改行時のインデントのスペースを指定
+set shiftwidth=2
