@@ -119,12 +119,17 @@ alias mv='mv -i'
 
 alias mkdir='mkdir -p'
 
+alias ghqpeco='cd $(ghq list -p | peco)'
+
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
+
+# merge済みのローカルブランチを一括削除
+alias deletelocalbranch='git branch --merged | egrep -v '\*|develop|master' | xargs git branch -d'
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
