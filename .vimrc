@@ -80,3 +80,6 @@ set tabstop=2
 
 " 改行時のインデントのスペースを指定
 set shiftwidth=2
+
+" deleteで改行消せるように
+set backspace=2
