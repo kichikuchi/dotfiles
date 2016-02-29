@@ -1,52 +1,50 @@
-if has('vim_starting')
-   " 初回起動時のみruntimepathにneobundleのパスを指定する
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
+if &compatible
+	  set nocompatible
 endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-" NeoBundleを初期化
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" NeoBundleをNeoBundle自体で管理する
-NeoBundleFetch 'Shougo/neobundle.vim'
+" deinを初期化
+call dein#begin(expand('~/.vim/dein/'))
 
 " plugins
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'toyamarinyon/vim-swift'
-NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'grep.vim'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Shougo/vimproc', {
+call dein#add('Shugo/dein.vim')
+call dein#add('Shugo/unite.vim')
+call dein#add('ujihisa/unite-colorscheme')
+call dein#add('rking/ag.vim')
+call dein#add('toyamarinyon/vim-swift')
+call dein#add('Townk/vim-autoclose')
+call dein#add('scrooloose/nerdtree')
+call dein#add('scrooloose/syntastic')
+call dein#add('grep.vim')
+call dein#add('mattn/emmet-vim')
+call dein#add('tpope/vim-fugitive')
+call dein#add('Shougo/vimproc', {
   \ 'build' : {
   \     'windows' : 'make -f make_mingw32.mak',
   \     'cygwin' : 'make -f make_cygwin.mak',
   \     'mac' : 'make -f make_mac.mak',
   \     'unix' : 'make -f make_unix.mak',
   \    },
-  \ }
-NeoBundle 'thinca/vim-quickrun'
+  \ })
+call dein#add('thinca/vim-quickrun')
 let g:quickrun_config={'*': {'split': ''}}
 let g:quickrun_config._={ 'runner':'vimproc',
  \       "runner/vimproc/updatetime" : 10,
  \       "outputter/buffer/close_on_empty" : 1,
  \ }
 
-NeoBundleLazy 'Shougo/vimfiler', {
+call dein#add('Shougo/vimfiler', {
 												\   'autoload' : { 'commands' : [ 'VimFiler' ] },
-												\ }
+												\ })
 
-NeoBundle 'LeafCage/yankround.vim'
-NeoBundleLazy 'tpope/vim-endwise', {
-  \ 'autoload' : { 'insert' : 1,}}
-NeoBundle 'glidenote/memolist.vim'
-NeoBundle 'vim-scripts/AnsiEsc.vim'
-NeoBundle 'bronson/vim-trailing-whitespace'
+call dein#add('LeafCage/yankround.vim')
+call dein#add('tpope/vim-endwise', {
+  \ 'autoload' : { 'insert' : 1,}})
+call dein#add('glidenote/memolist.vim')
+call dein#add('vim-scripts/AnsiEsc.vim')
+call dein#add('bronson/vim-trailing-whitespace')
 
-call neobundle#end()
+call dein#end()
 
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
