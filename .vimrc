@@ -7,8 +7,8 @@ set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.vim/dein/'))
 
 " plugins
-call dein#add('Shugo/dein.vim')
-call dein#add('Shugo/unite.vim')
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/unite.vim')
 call dein#add('ujihisa/unite-colorscheme')
 call dein#add('rking/ag.vim')
 call dein#add('toyamarinyon/vim-swift')
