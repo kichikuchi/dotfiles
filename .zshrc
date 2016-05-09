@@ -194,3 +194,11 @@ if [ -x "`which go`" ]; then
   export GOPATH=$HOME/go
   export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
+
+# added by travis gem
+[ -f /Users/KazunoriKikuchi/.travis/travis.sh ] && source /Users/KazunoriKikuchi/.travis/travis.sh
+
+# zsh color
+if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+     source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
