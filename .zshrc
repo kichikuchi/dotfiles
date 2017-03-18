@@ -118,9 +118,6 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 alias mkdir='mkdir -p'
-
-alias ghqpeco='cd $(ghq list -p | peco)'
-
 alias be='bundle exec'
 
 # sudo の後のコマンドでエイリアスを有効にする
@@ -129,6 +126,8 @@ alias sudo='sudo '
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
+
+alias ghqpeco='cd $(ghq list -p | peco)'
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
@@ -202,3 +201,14 @@ fi
 if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
      source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+# python
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# xcode open
+function open-xcode-project() {
+  open *.xcworkspace || open *.xcodeproj || echo 'fatal: Not a Xcode repository'
+}
+alias xc='open-xcode-project'
